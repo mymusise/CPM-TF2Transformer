@@ -8,6 +8,9 @@ CPM 原REPO：https://github.com/TsinghuaAI/CPM-Generate
 
 原项目首页：https://cpm.baai.ac.cn/
 
+或者可以直接在[colab](https://colab.research.google.com/github/mymusise/CPM-TF2Transformer/blob/main/demo-fp16.ipynb)上运行试试效果 <a href="https://colab.research.google.com/github/mymusise/CPM-TF2Transformer/blob/main/demo-fp16.ipynb">
+        <img alt="Build" src="https://colab.research.google.com/assets/colab-badge.svg">
+    </a>
 
 ## 例子
 
