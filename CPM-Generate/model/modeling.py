@@ -35,6 +35,7 @@ from torch.nn import CrossEntropyLoss
 #from torch.utils.checkpoint import checkpoint
 
 from data_utils.file_utils import cached_path
+from .archive_utils import extract_model_archive
 
 import mpu
 
@@ -734,8 +735,12 @@ class PreTrainedBertModel(nn.Module):
             tempdir = tempfile.mkdtemp()
             logger.info("extracting archive file {} to temp dir {}".format(
                 resolved_archive_file, tempdir))
-            with tarfile.open(resolved_archive_file, 'r:gz') as archive:
-                archive.extractall(tempdir)
+            try:
+                with tarfile.open(resolved_archive_file, 'r:gz') as archive:
+                    extract_model_archive(archive, tempdir)
+            except Exception:
+                shutil.rmtree(tempdir)
+                raise
             serialization_dir = tempdir
         # Load config
         config_file = os.path.join(serialization_dir, CONFIG_NAME)
